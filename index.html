@@ -1,0 +1,40 @@
+<body>
+  <script>
+         document.addEventListener("DOMContentLoaded", function() {
+
+let ascii = '!@#$%^&*()_+QWERTYUIOP{}|ASDFGHJKL:"ZXCVBNM<>?`1234567890-=qwertyuiop[]\\asdfghjkl;\'zxcvbnm,./~';
+let asciiArray = ascii.split('');
+let asciiRain = document.createElement('div');
+asciiRain.style.position = 'absolute';
+asciiRain.style.top = '0';
+asciiRain.style.left = '0';
+asciiRain.style.width = '100%';
+asciiRain.style.height = '100%';
+asciiRain.style.backgroundColor = 'black';
+asciiRain.style.color = 'white';
+asciiRain.style.fontFamily = 'monospace';
+asciiRain.style.fontSize = '10px';
+asciiRain.style.overflow = 'hidden';
+document.body.appendChild(asciiRain);
+
+let asciiRainInterval = setInterval(function() {
+  let asciiRainChar = document.createElement('span');
+  asciiRainChar.innerHTML = asciiArray[Math.floor(Math.random() * asciiArray.length)];
+  asciiRainChar.style.position = 'absolute';
+  asciiRainChar.style.top = '0';
+  asciiRainChar.style.left = Math.floor(Math.random() * window.innerWidth) + 'px';
+  asciiRainChar.style.animation = 'asciiRainFall ' + (Math.floor(Math.random() * 10) + 5) + 's linear';
+  asciiRain.appendChild(asciiRainChar);
+}, 100);
+
+let asciiRainFall = document.createElement('style');
+asciiRainFall.innerHTML = '@keyframes asciiRainFall { from { top: 0; } to { top: ' + window.innerHeight + 'px; } }';
+document.head.appendChild(asciiRainFall);
+
+let asciiRainTrails = document.createElement('style');
+asciiRainTrails.innerHTML = 'span:nth-child(n+2) { opacity: 1; }';
+document.head.appendChild(asciiRainTrails);
+});
+
+  </script>
+</body>
